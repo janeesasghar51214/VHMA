@@ -1,19 +1,16 @@
 from fastapi import FastAPI
+from app.auth.routes import router as auth_router
 
 app = FastAPI(
-    title="VMHA API",
-    description="Virtual Mental Health Assistant Backend",
-    version="1.0.0"
+    title="Virtual Mental Health Assistant API",
+    version="1.0"
 )
+
+app.include_router(auth_router)
+
 
 @app.get("/")
 def home():
     return {
-        "message": "Welcome to VMHA API 🚀"
-    }
-
-@app.get("/health")
-def health_check():
-    return {
-        "status": "Server is running successfully!"
+        "message": "Welcome to VMHA Backend"
     }
